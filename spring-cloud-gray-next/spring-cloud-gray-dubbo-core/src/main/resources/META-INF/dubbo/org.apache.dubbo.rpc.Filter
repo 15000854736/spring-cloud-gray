@@ -1,0 +1,2 @@
+grayConsumer=cn.springcloud.gray.dubbo.GrayConsumerFilter
+grayProvider=cn.springcloud.gray.dubbo.GrayProviderFilter

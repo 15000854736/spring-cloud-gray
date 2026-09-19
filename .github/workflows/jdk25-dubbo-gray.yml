@@ -1,0 +1,22 @@
+name: JDK 25 Dubbo Gray
+
+on:
+  push:
+    branches: ["feature/jdk25-boot4-dubbo-gray"]
+    paths: ["spring-cloud-gray-next/**", ".github/workflows/jdk25-dubbo-gray.yml"]
+  pull_request:
+    paths: ["spring-cloud-gray-next/**", ".github/workflows/jdk25-dubbo-gray.yml"]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+          cache: maven
+      - name: Verify JDK 25 modules
+        working-directory: spring-cloud-gray-next
+        run: mvn --batch-mode --no-transfer-progress verify
