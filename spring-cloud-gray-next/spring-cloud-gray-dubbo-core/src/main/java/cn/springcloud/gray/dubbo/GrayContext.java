@@ -26,7 +26,8 @@ public final class GrayContext {
         ScopedValue.where(TAG, normalized).run(action);
     }
 
-    public static <T> T callWithTag(String tag, java.util.concurrent.Callable<T> action) throws Exception {
+    public static <T, X extends Throwable> T callWithTag(
+            String tag, ScopedValue.CallableOp<? extends T, X> action) throws X {
         String normalized = normalize(tag);
         if (normalized == null) {
             return action.call();
